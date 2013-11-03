@@ -35,9 +35,9 @@ bindsym $mod+k focus down
 bindsym $mod+l focus up
 bindsym $mod+odiaeresis focus right
 
-bindsym XF86AudioRaiseVolume exec --no-startup-id amixer set Master '5%+'
-bindsym XF86AudioLowerVolume exec --no-startup-id amixer set Master '5%-'
-bindsym XF86AudioMute exec --no-startup-id "amixer set Headphone toggle;amixer set Master toggle;"
+bindsym XF86AudioRaiseVolume exec --no-startup-id "amixer set Master '5%+' & amixer set Headphone '5%+';"
+bindsym XF86AudioLowerVolume exec --no-startup-id "amixer set Master '5%-' & amixer set Headphone '5%-'"
+bindsym XF86AudioMute exec --no-startup-id "amixer set Master on ;amixer set Headphone toggle; amixer set Speaker 0%; amixer set Speaker on"
 
 bindsym XF86KbdBrightnessUp   exec "kbbrightness inc"
 bindsym XF86KbdBrightnessDown exec "kbbrightness dec"
@@ -124,12 +124,23 @@ bindsym $mod+F10 move container to workspace 10
 #bindsym $mod+Shift+parenright move container to workspace 9
 #bindsym $mod+Shift+equal move container to workspace 10
 
+set $confirm_logout_mode           confirm logout ?
+set $confirm_suspend_mode          confirm suspend ?
+set $confirm_reboot_mode           confirm reboot ?
+set $confirm_shutdown_mode         confirm shutdown ?
+
+mode "$confirm_logout_mode" {}
+mode "$confirm_suspend_mode" {}
+mode "$confirm_reboot_mode" {}
+mode "$confirm_shutdown_mode" {}
+
+
 # reload the configuration file
 bindsym $mod+Shift+C reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+R restart
 # exit i3 (logs you out of your X session)
-bindsym $mod+Shift+E exit
+bindsym $mod+Shift+E exec ~/Scripts/i3-exit.py
 
 
 # resize window (you can also use the mouse for that)
@@ -193,6 +204,7 @@ client.urgent           #C10004 #900000 #ffffff #900000
 
 for_window [title="Google Chrome$"] border none
 for_window [title="FileZilla"] border none
+for_window [title="^Log out bewo?"] floating enable 
 #for_window [class="^Spotify$" title="Spotify"] floating enable
 for_window [title="Eclipse"] border none
 for_window [title="Wicd Netzwerk Manager"] floating enable
@@ -205,18 +217,19 @@ for_window [title="Spotify"] workspace 4-Spotify
 exec xcompmgr
 exec jupiter
 exec lxkeymap --autostart us
-exec clipit
+exec --no-startup-id clipit
 exec xfce4-power-manager
 exec xscreensaver -no-splash
-exec pacmanfm --desktop --profile lubuntu
+exec --no-startup-id pacmanfm --desktop --profile lubuntu
 exec wicd-gtk
 exec /usr/lib/jupiter/scripts/jupiter
-exec dunst
+exec --no-startup-id dunst
 exec sh /home/bewo/Scripts/redshift.sh
-exec ssh-agent
+exec --no-startup-id ssh-agent
 exec i3-msg 'workspace 5-Browser; exec google-chrome --restore-last-session;'
 exec i3-msg 'workspace 4-Spotify; exec spotify'
 exec i3-msg 'workspace 1-Shell'
+
 exec blueman-applet
 exec /usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1
 #exec volwheel
