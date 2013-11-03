@@ -1,3 +1,8 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =1
-let g:netrw_dirhist_1='/etc/apache2/sites-enabled'
+let g:netrw_dirhist_cnt =6
+let g:netrw_dirhist_1='/home/bewo/Projects/typetrainer/haml'
+let g:netrw_dirhist_2='/home/bewo/Projects/typetrainer/sass'
+let g:netrw_dirhist_3='/home/bewo/Projects/typetrainer/haml'
+let g:netrw_dirhist_4='/home/bewo/Projects/blog/source'
+let g:netrw_dirhist_5='/home/bewo/Projects/blog/source/_posts'
+let g:netrw_dirhist_6='/home/bewo/.config/awesome'

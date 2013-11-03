@@ -59,6 +59,9 @@ cmap w!! w !sudo tee %
 " OPTIONS 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
+"case insensitive search by default
+set ic 
+
 colo slate
 set number
 

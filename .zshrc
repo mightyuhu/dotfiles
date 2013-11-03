@@ -57,6 +57,11 @@ alias vim="stty stop '' -ixoff ; vim"
 # `Frozing' tty, so after any command terminal settings will be restored
 ttyctl -f
 
+zstyle ":completion:*:commands" rehash 1
+
 # Customize to your needs...
 PATH=$PATH:$HOME/eclipse/
 export PATH=$PATH:/home/bewo/.rvm/gems/ruby-2.0.0-p247/bin:/home/bewo/.rvm/gems/ruby-2.0.0-p247@global/bin:/home/bewo/.rvm/rubies/ruby-2.0.0-p247/bin:/home/bewo/.rvm/bin:/usr/lib/lightdm/lightdm:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games
+
+### Added by the Heroku Toolbelt
+export PATH="/usr/local/heroku/bin:$PATH"
